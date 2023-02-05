@@ -50,6 +50,39 @@ app.post('/api/v1/tours',(req,res)=>{
 
 })
 
+app.patch('/api/v1/tours/:id',(req,res)=>{
+    if(req.params.id*1>tours.length){
+        return res.status(404).json({
+            status:"failed",
+            data:{
+                message:"Invalid Id"
+            }
+        })
+    }
+
+    res.status(200).json({
+        status:"success",
+        data:{
+            tour:'<Updated tour here'
+        }
+    })
+})
+app.delete('/api/v1/tours/:id',(req,res)=>{
+    if(req.params.id*1>tours.length){
+        return res.status(404).json({
+            status:"failed",
+            data:{
+                message:"Invalid Id"
+            }
+        })
+    }
+
+    res.status(204).json({
+        status:"success",
+        data:null
+    })
+})
+
 app.listen(3000,()=>{
     console.log("server is running in port 3000")
 })
