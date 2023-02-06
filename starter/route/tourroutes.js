@@ -1,18 +1,18 @@
 
 const express=require('express')
 
-const {getAllTour,getTour,createTour,deleteTour,updateTour}=require("../controller/tourController")
+const {getAllTour,getTour,createTour,deleteTour,updateTour,checkId,checkBody}=require("../controller/tourController")
 const router=express.Router()
 
 
 
-
+router.param('id',checkId)
 
 
 router
 .route('/')
 .get(getAllTour)
-.post(createTour)
+.post(checkBody,createTour)
 
 router
 .route('/:id')
